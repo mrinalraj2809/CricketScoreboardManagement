@@ -46,7 +46,7 @@ class Team
 	int wicket_taken_by_Team;
 	int total_runs_scored_by_team;
 	bool toss_won_by_team;
-	int fall_of_wickets[10];    // wickets vs runs 
+	int fall_of_wickets[10];    // wickets vs runs
 
 	int on_strike_batsman;
 	int far_end_batsman;
@@ -140,7 +140,7 @@ class Team
 		}
 	}
 
-	void inningsStarted(Team battingTeam,Team bowlingTeam,int num_Of_Over_Match)
+	void inningsStarted(Team *battingTeam,Team *bowlingTeam,int num_Of_Over_Match)
 	{
 
 		char result;
@@ -150,20 +150,20 @@ class Team
 				cin>>result;
 				if(result>=48 && result<=57)
 				{
-					battingTeam.p[battingTeam.on_strike_batsman].no_of_runs_scored+=result-48;
-					bowlingTeam.p[bowlingTeam.on_strike_bowler].no_of_runs_given+=result-48;
+					battingTeam->p[battingTeam->on_strike_batsman].no_of_runs_scored+=result-48;
+					bowlingTeam->p[bowlingTeam->on_strike_bowler].no_of_runs_given+=result-48;
 					/*	no_of_runs_scored=0;
 							no_of_runs_given=0;
 							no_of_balls_played=0;
 							no_of_balls_delivered=0;
-							
+
 							over_played=0;      //to be done after the end of each over or after match ends or wicket falls
-							
+
 							strike_rate_of_a_player=0;*/    //runs vs ball in percent  also to be done after input is 'w'
 							//above is of class player
-					battingTeam.p[battingTeam.on_strike_batsman].no_of_balls_played++;
-					bowlingTeam.p[bowlingTeam.on_strike_bowler].no_of_balls_delivered++;
-							
+					battingTeam->p[battingTeam->on_strike_batsman].no_of_balls_played++;
+					bowlingTeam->p[bowlingTeam->on_strike_bowler].no_of_balls_delivered++;
+
 						/*
 							over_played_by_team = 0;    //to be done after end of each
 							wicket_taken_by_Team = 0;
@@ -172,43 +172,43 @@ class Team
 							on_strike_batsman = 0;
 							far_end_batsman=1;
 							fall_of_wickets[10];
-							*/	
-					battingTeam.total_runs_scored_by_team += (result - 48) ;
+							*/
+					battingTeam->total_runs_scored_by_team += (result - 48) ;
 					if(strike_changed(result-48)==true)
 					{
 						//to check strike change then increment run and wickets stats for team and player
 						//to swap the batsmen
-						battingTeam.on_strike_batsman=battingTeam.on_strike_batsman+battingTeam.far_end_batsman;
-						battingTeam.far_end_batsman=battingTeam.on_strike_batsman-battingTeam.far_end_batsman;
-						battingTeam.on_strike_batsman=battingTeam.on_strike_batsman-battingTeam.far_end_batsman;
-						
-							
-						
+						battingTeam->on_strike_batsman=battingTeam->on_strike_batsman+battingTeam->far_end_batsman;
+						battingTeam->far_end_batsman=battingTeam->on_strike_batsman-battingTeam->far_end_batsman;
+						battingTeam->on_strike_batsman=battingTeam->on_strike_batsman-battingTeam->far_end_batsman;
+
+
+
 					}
-					
+
 				}
-				
+
 				//extra=0;   //to update if extras 'e' is input
 				//no_of_wicket_taken=0;  if input is 'w' then update the wickets taken in the bowlingTeam player
 				if (result=='w')
 				{
 					//first display the player details after fall of his wickets
-					bowlingTeam.p[bowlingTeam.on_strike_bowler].no_of_wicket_taken++;	
-					battingTeam.fall_of_wickets[bowlingTeam.wicket_taken_by_Team++]=battingTeam.total_runs_scored_by_team;
-					battingTeam.on_strike_batsman=(battingTeam.on_strike_batsman>battingTeam.far_end_batsman)?battingTeam.on_strike_batsman+1:battingTeam.far_end_batsman+1;
+					bowlingTeam->p[bowlingTeam->on_strike_bowler].no_of_wicket_taken++;
+					battingTeam->fall_of_wickets[bowlingTeam->wicket_taken_by_Team++]=battingTeam->total_runs_scored_by_team;
+					battingTeam->on_strike_batsman=(battingTeam->on_strike_batsman>battingTeam->far_end_batsman)?battingTeam->on_strike_batsman+1:battingTeam->far_end_batsman+1;
 				}
 				if (i % 5 == 0)
 				{
-					battingTeam.over_played_by_team++;
-					battingTeam.p[battingTeam.on_strike_batsman].over_played=(battingTeam.p[on_strike_batsman].no_of_balls_played*1.0)/6;//over played by a batsmen
-					bowlingTeam.p[bowlingTeam.on_strike_bowler].over_played++;//update the ball delivered
-					battingTeam.p[battingTeam.on_strike_batsman].strike_rate_of_a_player=(battingTeam.p[battingTeam.on_strike_batsman].no_of_runs_scored / battingTeam.p[battingTeam.on_strike_batsman].over_played)*100;//strike rate of batsmen after each delivery
-					bowlingTeam.p[bowlingTeam.on_strike_bowler].economy_rate_of_a_player=(bowlingTeam.p[bowlingTeam.on_strike_bowler].no_of_runs_given*1.0/bowlingTeam.p[bowlingTeam.on_strike_bowler].no_of_balls_delivered)*100;
+					battingTeam->over_played_by_team++;
+					battingTeam->p[battingTeam->on_strike_batsman].over_played=(battingTeam->p[on_strike_batsman].no_of_balls_played*1.0)/6;//over played by a batsmen
+					bowlingTeam->p[bowlingTeam->on_strike_bowler].over_played++;//update the ball delivered
+					battingTeam->p[battingTeam->on_strike_batsman].strike_rate_of_a_player=(battingTeam->p[battingTeam->on_strike_batsman].no_of_runs_scored / battingTeam->p[battingTeam->on_strike_batsman].over_played)*100;//strike rate of batsmen after each delivery
+					bowlingTeam->p[bowlingTeam->on_strike_bowler].economy_rate_of_a_player=(bowlingTeam->p[bowlingTeam->on_strike_bowler].no_of_runs_given*1.0/bowlingTeam->p[bowlingTeam->on_strike_bowler].no_of_balls_delivered)*100;
 				}
 
 			}
-			
-			
+
+
 		//to do 18 times loop if 3over match
 		//at each ball update batsmen on strikes run and bowlers runs given also the TEAMS RUNS ,OVERS PLAYED,
 		//if run scored is 1,3 strike changed else(0,4,6,2) strike unchanged
@@ -250,12 +250,12 @@ int main()
 	if(tossWon_Team_Choose_Batting)
 	{
 		innings_1_batting_team=toss_won_by_team;
-		t0.inningsStarted(t[toss_won_by_team],t[toss_lost_by_team],over);
+		t0.inningsStarted(&t[toss_won_by_team],&t[toss_lost_by_team],over);
 	}
 	else
 	{
 		innings_1_batting_team=toss_lost_by_team;
-		t0.inningsStarted(t[toss_lost_by_team],t[toss_won_by_team],over);
+		t0.inningsStarted(&t[toss_lost_by_team],& t[toss_won_by_team],over);
 	}
-	cout<<"total runs required to win the match"<<t[innings_1_batting_team].total_runs_scored_by_team+1;
+	cout<<"total runs required to win the match \t:"<<t[innings_1_batting_team].total_runs_scored_by_team+1<<endl;
 }
