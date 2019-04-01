@@ -257,5 +257,5 @@ int main()
 		innings_1_batting_team=toss_lost_by_team;
 		t0.inningsStarted(&t[toss_lost_by_team],& t[toss_won_by_team],over);
 	}
-	cout<<"total runs required to win the match \t:"<<t[innings_1_batting_team].total_runs_scored_by_team+1<<endl;
+	cout<<"Total runs required to win the match \t:"<<t[innings_1_batting_team].total_runs_scored_by_team+1<<endl;
 }
