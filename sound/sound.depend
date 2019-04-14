@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1555172532 source:c:\users\administrator\sound\main.cpp
+	<iostream>
+	<ctime>
+	<cstring>
+	<cstdlib>
+	<stdlib.h>
+	<windows.h>
+	<mmsystem.h>
+
