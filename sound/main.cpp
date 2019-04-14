@@ -4,6 +4,8 @@
 #include <cstdlib>
 #include <stdlib.h>
 #include<windows.h>
+#include <cctype>
+#include <unistd.h>
 #include<mmsystem.h>
 using namespace std;
 class Player
@@ -78,8 +80,9 @@ class Team
 		char choice[4];
 		cout<<t.teamName<<":Would you like to Bat/Bowl first\t:-(Bat/Bowl)";
 		cin>>choice;
+		 tolower(choice[4]);
 
-		if(strcmp(choice,"Bat")==0 ||strcmp(choice,"Bowl")==0)
+		if(strcmp(choice,"bat")==0 ||strcmp(choice,"bowl")==0)
 		{
 				if(strcmp(choice,"Bat")==0)
 					return true;
@@ -96,13 +99,27 @@ class Team
 	int tossTime(Team t1, Team t2)
 	{
 		srand(time(NULL));
-		int random;
-		random=(rand()%2);
+		int random=0;
+		//random=(rand()%2);
 		cout<<"It toss time"<<endl;
 		if(random==0)
 		{
 
-			cout<<t1.teamName<<"Will throw the coin"<<endl;
+			cout<<"Team \t"<<t1.teamName<<"\tWill throw the coin"<<endl;
+							int i = 0;
+						 	char load[26];
+						 	while(i < 25)
+						 	{
+						 		system("cls");
+						 		load[i++] = '#';
+						 		load[i] = '\0';
+
+								printf("\n\n\n\n\t\tTOSSING [%-25s]", load);
+						 		usleep(111100);
+						 	}
+
+						 system("cls");
+						 printf("\n");
 			random=(rand()%2);
 			if(random ==0)
 			{
@@ -204,6 +221,7 @@ class Team
 
 
 			case 4:system("cls");
+                    PlaySound(TEXT("fant.wav"),NULL,SND_SYNC);
                     cout<<"                                                        "<<'\n';
                     cout<<"                                                       "<<'\n';
                     cout<<"                                                       "<<'\n';
@@ -228,10 +246,6 @@ class Team
                     cout<<"                                                       "<<'\n';
                     cout<<"                                                       "<<'\n';
                     cout<<"                                                       "<<'\n';
-                    cout<<"                                                       "<<'\n';
-                    cout<<"                                                       "<<'\n';
-                    cout<<"                                                       "<<'\n';
-                    cout<<"                                                       "<<'\n';
 
                     cout<<"                                         #############         ####            ##       ##      #######       "<<'\n';
                     cout<<"                                         ##                  ##    ##          ##       ##      ##     #        "<<'\n';
@@ -244,10 +258,7 @@ class Team
                     cout<<"                                                       "<<'\n';
                     cout<<"                                                       "<<'\n';
                     cout<<"                                                       "<<'\n';
-                    cout<<"                                                       "<<'\n';
-                    cout<<"                                                       "<<'\n';
-                    cout<<"                                                       "<<'\n';
-                    cout<<"                                                       "<<'\n';
+
 
 
 
@@ -257,14 +268,13 @@ class Team
 
 			break;
             case 6:system("cls");
+                    PlaySound(TEXT("six.wav"),NULL,SND_SYNC);
                   cout<<"                                                        "<<'\n';
                    cout<<"                                                       "<<'\n';
                     cout<<"                                                       "<<'\n';
                     cout<<"                                                       "<<'\n';
                     cout<<"                                                       "<<'\n';
-                    cout<<"                                                       "<<'\n';
-                    cout<<"                                                       "<<'\n';
-                    cout<<"                                                       "<<'\n';
+
                    cout << "           ########         ##           ##      #    #########     ##              #########     ##########     ############            ######                " << '\n';
                    cout << "           ##              #  #          # #     #        #        #  #            #                   #               #               #            " << '\n';
                    cout << "           ##             #    #         #  #    #        #       #    #          #                    #               #              #        "                                << '\n';
@@ -277,9 +287,7 @@ class Team
                     cout<<"                                                       "<<'\n';
                     cout<<"                                                       "<<'\n';
                     cout<<"                                                       "<<'\n';
-                    cout<<"                                                       "<<'\n';
-                    cout<<"                                                       "<<'\n';
-                    cout<<"                                                       "<<'\n';
+
                     cout<<"                                                         ########      ###########       ##      ##            "<<'\n';
                     cout<<"                                                        ##                  ##            ##    ##  "<<'\n';
                     cout<<"                                                       ##                   ##             ##  ##       "<<'\n';
@@ -292,10 +300,7 @@ class Team
                     cout<<"                                                       "<<'\n';
                     cout<<"                                                       "<<'\n';
                     cout<<"                                                       "<<'\n';
-                    cout<<"                                                       "<<'\n';
-                    cout<<"                                                       "<<'\n';
-                    cout<<"                                                       "<<'\n';
-                    cout<<"                                                       "<<'\n';
+
 
 
 
@@ -317,15 +322,14 @@ class Team
 
 			case 39:                                                                          // 39+48 =87 ('W')
 			case 71:system("cls");
+                        PlaySound(TEXT("wicketdown.wav"),NULL,SND_SYNC);
 			        cout<<"                                                        "<<'\n';
                     cout<<"                                                       "<<'\n';
                     cout<<"                                                       "<<'\n';
                     cout<<"                                                       "<<'\n';
                     cout<<"                                                       "<<'\n';
-                    cout<<"                                                       "<<'\n';
-                    cout<<"                                                       "<<'\n';
-                    cout<<"                                                       "<<'\n';
-			        cout<<"                  ##           ##      ###########          #####       ##   ##     ##########      ##############                                     "<<'\n';
+
+			        			cout<<"                  ##           ##      ###########          #####       ##   ##     ##########      ##############                                     "<<'\n';
                     cout<<"                  ##           ##           ##            ##            ##  ##      ##                    ##                                     "<<'\n';
                     cout<<"                  ##           ##           ##           ##             ## ##       ##                    ##                                                    "<<'\n';
                     cout<<"                  ##    ###    ##           ##           #              ####        #########             ##                                "<<'\n';
@@ -334,16 +338,14 @@ class Team
                     cout<<"                  #####      ####       ###########         #####       ##    ##    ##########            ##                                      "<<'\n';
 
 
-			        cout<<"                                                        "<<'\n';
-                    cout<<"                                                       "<<'\n';
-                    cout<<"                                                       "<<'\n';
-                    cout<<"                                                       "<<'\n';
+			        			cout<<"                                                        "<<'\n';
                     cout<<"                                                       "<<'\n';
                     cout<<"                                                       "<<'\n';
                     cout<<"                                                       "<<'\n';
                     cout<<"                                                       "<<'\n';
 
-			        cout<<"                              ########             ######      ##           ##    ####      ##          "<<'\n';
+
+			        			cout<<"                              ########             ######      ##           ##    ####      ##          "<<'\n';
                     cout<<"                              ##      ##         ##      ##    ##           ##    ##  ##    ##                        "<<'\n';
                     cout<<"                              ##       ##       ##        ##   ##           ##    ##   ##   ##                 "<<'\n';
                     cout<<"                              ##        ##     ##          ##  ##     #     ##    ##    ##  ##            "<<'\n';
@@ -355,9 +357,36 @@ class Team
 			default:return;
 		}
 	}
+	void displayInScoreboard(Team battingTeam, Team bowlingTeam )
+	{
+		//system("cls");
+		cout<<"                        **************************************************************************************************\n";
+	  cout<<"                        **************************************************************************************************\n";
+	  cout<<"                        **                                                                                              **\n";
+	  cout<<"                        **      BATTING TEAM      : "<<battingTeam.teamName<<"              BOWLING TEAM     : "<<bowlingTeam.teamName<<"                                                **\n";
+	  cout<<"                        **                                                                                              **\n";
+	  cout<<"                        **      BATSMEN ON STRIKE : "<<battingTeam.p[battingTeam.on_strike_batsman].name_of_player<<"            BOWLER ON STRIKE : "<<bowlingTeam.p[bowlingTeam.on_strike_bowler].name_of_player<<"                   \n";
+	  cout<<"                        **                                                                                              **\n";
+	  cout<<"                        **      STRIKE RATE       : "<<battingTeam.p[battingTeam.on_strike_batsman].strike_rate_of_a_player<<"   ECONOMY RATE     : "<<bowlingTeam.p[bowlingTeam.on_strike_bowler].economy_rate_of_a_player<<"                                                                  **\n";
+	  cout<<"                        **                                                                                              **\n";
+	  cout<<"                        **      NUMBER OF RUNS    : "<<battingTeam.p[battingTeam.on_strike_batsman].no_of_runs_scored<<"         NO. RUNS GIVEN   : "<<bowlingTeam.p[bowlingTeam.on_strike_bowler].no_of_runs_given<<"                                                        **\n";
+	  cout<<"                        **                                                                                              **\n";
+	  cout<<"                        **      NUMBER OF BALLS   : "<<battingTeam.p[battingTeam.on_strike_batsman].no_of_balls_played<<"        BALLS DELIVERED  : "<<bowlingTeam.p[bowlingTeam.on_strike_bowler].no_of_balls_delivered<<"                                                **\n";
+	  cout<<"                        **                                                                                              **\n";
+	  cout<<"                        **                                                                                              **\n";
+	  cout<<"                        **                                                                                              **\n";
+	  cout<<"                        **                                                                                              **\n";
+	  cout<<"                        **                                                                                              **\n";
+	  cout<<"                        **                                                                                              **\n";
+	  cout<<"                        **     TOTAL RUN          : "<<battingTeam.total_runs_scored_by_team<<"/"<<bowlingTeam.wicket_taken_by_Team<<"                                                                                        **\n";
+	  cout<<"                        **     CURRENT OVER       : "<<battingTeam.over_played_by_team<<"                                                                                         **\n";
+	  cout<<"                        **                                                                                              **\n";
+	  cout<<"                        **************************************************************************************************\n";
+	  cout<<"                        **************************************************************************************************\n";
+	}
 
 
-	void inningsStarted(Team *battingTeam,Team *bowlingTeam,int num_Of_Over_Match)
+	void inningsStarted(Team *battingTeam,Team *bowlingTeam,int num_Of_Over_Match , int total_runs_scored_by_Innings_1_team)
 	{
 
 	  char result;
@@ -418,6 +447,7 @@ class Team
 
 
 	        }
+					displayInScoreboard(*battingTeam,*bowlingTeam);
 	    	}
 				if (i % 6 == 0 )
 				{
@@ -442,6 +472,14 @@ class Team
 	  //if run scored is 1,3 strike changed else(0,4,6,2) strike unchanged
 	  //if wickets fall update bowlers wicket stats bring new batsmen on strike
 		}
+		if((total_runs_scored_by_Innings_1_team != 0) && (battingTeam->total_runs_scored_by_team < bowlingTeam->total_runs_scored_by_team))  // during innnings 2 when total is not zerothen compare the the bowling and batting team runs
+		{
+				cout<<bowlingTeam->teamName <<" won the match by"<< bowlingTeam->total_runs_scored_by_team - battingTeam->total_runs_scored_by_team ;
+		}
+		else
+		{
+			cout<<battingTeam->teamName <<" won the match by "<< 10 - bowlingTeam->wicket_taken_by_Team<<" wickets" ;
+		}
 	}
 
 
@@ -455,8 +493,9 @@ int main()
 PlaySound(TEXT("ipl.wav"),NULL,SND_SYNC);
 
 
-    system("Color 7C");
+    //system("Color 7C");
 	Team t[2],t0;int over;
+	int total = 0;
 	int innings_1_batting_team;
 	int innings_2_batting_team;
 
@@ -489,17 +528,39 @@ PlaySound(TEXT("ipl.wav"),NULL,SND_SYNC);
 	{
 
 		innings_1_batting_team=toss_won_by_team;
-		t0.inningsStarted(&t[toss_won_by_team],&t[toss_lost_by_team],over);
+		t0.inningsStarted(&t[toss_won_by_team],&t[toss_lost_by_team],over,total);
 	}
 	else
 	{
 		innings_1_batting_team=toss_lost_by_team;
-		t0.inningsStarted(&t[toss_lost_by_team], &t[toss_won_by_team],over);
+		t0.inningsStarted(&t[toss_lost_by_team], &t[toss_won_by_team],over,total);
 	}
 	//Innings 1 stores the 0 or 1 which mean we can get the no. of runs scored in innings 1
-	cout<<"Total runs required to win the match \t:"<<t[innings_1_batting_team].total_runs_scored_by_team + 1<<endl;
+
 
 	//After innnings is over we hv to display
 
-}
+	int i = 0;
+	char load[26];
+	while(i < 25)
+	{
+		cout<<"-------------------------------------------------------------------------- "<<endl;
+		system("cls");
+		load[i++] = '#';
+		load[i] = '\0';
 
+		printf("\n\n\n\n\t\tTotal runs required to win the match \t:%d\n",t[innings_1_batting_team].total_runs_scored_by_team +1) ;
+		cout<<"-------------------------------------------------------------------------- "<<endl;
+		usleep(199999);
+	}
+
+ system("cls");
+ printf("\n");
+	if(innings_1_batting_team == 0)
+		innings_2_batting_team = 1;
+	else
+		innings_2_batting_team = 0;
+	 total = t[innings_1_batting_team].total_runs_scored_by_team +1 ;
+	t0.inningsStarted(&t[innings_2_batting_team],&t[innings_1_batting_team],over,total);
+
+}
